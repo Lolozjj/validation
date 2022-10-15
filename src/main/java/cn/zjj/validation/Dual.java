@@ -15,8 +15,8 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 复合校验器
- * 只能作用在类上，用@Big 和 @Small 修饰要比较的字段
+ * 二元校验器校验器
+ * 只能作用在类上，用@Former 和 @Latter 修饰要比较的字段
  */
 @Constraint(validatedBy = {DualValidator.class})
 @Documented
@@ -42,10 +42,10 @@ public @interface Dual {
     @Documented
     @Retention(RUNTIME)
     @Target({FIELD})
-    public @interface Former{
+    @interface Former{
         /**
-         * 一个被 @Difference 修饰的类中可能存在多个差值对
-         * 用此属性来确定@Big @Small之间的配对
+         * 一个被 @Dual 修饰的类中可能存在多个差值对
+         * 用此属性来确定@Former @Latter之间的配对
          * @return
          */
         String alias();
@@ -57,7 +57,7 @@ public @interface Dual {
     @Documented
     @Retention(RUNTIME)
     @Target({FIELD})
-    public @interface Latter{
+    @interface Latter{
         String alias();
     }
 

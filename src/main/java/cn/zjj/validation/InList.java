@@ -1,6 +1,6 @@
 package cn.zjj.validation;
 
-import cn.zjj.validator.EnumsValidator;
+import cn.zjj.validator.InListValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -12,17 +12,13 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-/**
- * 枚举值参数校验器
- * 判断参数值是否在枚举元素的names之中
- */
-@Constraint(validatedBy = {EnumsValidator.class})
+@Constraint(validatedBy = {InListValidator.class})
 @Documented
-@Repeatable(Enums.List.class)
+@Repeatable(InList.List.class)
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
-public @interface Enums {
-    String message() default "不在枚举值中";
+public @interface InList {
+    String message() default "不在列表值中";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
 
@@ -30,7 +26,7 @@ public @interface Enums {
      * 枚举类
      * @return class
      */
-    Class<? extends Enum> value();
+    String[] value();
 
     /**
      * 是否理睬大小写，默认不理睬
@@ -42,6 +38,6 @@ public @interface Enums {
     @Retention(RUNTIME)
     @Documented
     @interface List {
-        Enums[] value();
+        InList[] value();
     }
 }
