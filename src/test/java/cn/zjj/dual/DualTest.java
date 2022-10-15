@@ -1,6 +1,7 @@
 package cn.zjj.dual;
 
 import cn.zjj.dual.params.DualComparableParams;
+import cn.zjj.dual.params.DualDateRangeParams;
 import cn.zjj.dual.params.DualParams;
 import cn.zjj.dual.params.DualTypeErrorParams;
 import org.junit.Assert;
@@ -45,9 +46,17 @@ public class DualTest {
 
     @Test
     public void testComparable() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         DualComparableParams dualParams = new DualComparableParams(sdf.parse("2022-10-10"),sdf.parse("2022-10-1"));
         Set<ConstraintViolation<DualComparableParams>> set = validatorAdapter.validate(dualParams);
+        Assert.assertFalse(set.isEmpty());
+    }
+
+    @Test
+    public void testDateRange() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DualDateRangeParams dualParams = new DualDateRangeParams(sdf.parse("2022-10-10 12:00:00"),sdf.parse("2022-10-10 12:20:00"));
+        Set<ConstraintViolation<DualDateRangeParams>> set = validatorAdapter.validate(dualParams);
         Assert.assertFalse(set.isEmpty());
     }
 

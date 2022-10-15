@@ -13,7 +13,8 @@ import java.util.stream.Collectors;
 /**
  * 枚举值参数验证器
  *
- *
+ * @author zjj
+ * @date 2022-10-15 22:00:00
  */
 public class EnumsValidator implements ConstraintValidator<Enums, String> {
     /**
@@ -31,6 +32,7 @@ public class EnumsValidator implements ConstraintValidator<Enums, String> {
      *
      * @param constraintAnnotation 修饰参数的 Enums注解
      */
+    @Override
     public void initialize(Enums constraintAnnotation) {
         Class<? extends Enum> enumClass = constraintAnnotation.value();
         try{

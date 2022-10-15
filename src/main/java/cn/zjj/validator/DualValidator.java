@@ -10,6 +10,9 @@ import java.lang.reflect.Field;
 
 /**
  * 双元验证器
+ *
+ * @author zjj
+ * @date 2022-10-15 22:00:00
  */
 @Slf4j
 public class DualValidator implements ConstraintValidator<Dual, Object> {
@@ -18,15 +21,18 @@ public class DualValidator implements ConstraintValidator<Dual, Object> {
      * 双元比较器
      */
     private DualComparator comparator;
+
     /**
      * 验证器别名分组
      */
     private String alias;
 
+    @Override
     public void initialize(Dual dualAno) {
         Class<? extends DualComparator> comparator = dualAno.comparator();
         try {
             this.comparator = comparator.newInstance();
+            this.comparator.setParams(dualAno.params());
             this.alias = dualAno.alias();
         } catch (Exception e) {
             e.printStackTrace();

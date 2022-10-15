@@ -9,7 +9,8 @@ import java.util.function.BiFunction;
 /**
  * InList参数验证器
  *
- *
+ * @author zjj
+ * @date 2022-10-15 22:00:00
  */
 public class InListValidator implements ConstraintValidator<InList, Object> {
     /**
@@ -27,6 +28,7 @@ public class InListValidator implements ConstraintValidator<InList, Object> {
      *
      * @param ano 修饰参数的 InList注解
      */
+    @Override
     public void initialize(InList ano) {
         list = ano.value();;
         ignoreCase = ano.ignoreCase();

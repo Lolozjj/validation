@@ -1,11 +1,14 @@
 package cn.zjj.function.dual.impl;
 
-import cn.zjj.function.dual.DualComparator;
+import cn.zjj.function.dual.AbstractDualComparator;
 
 /**
  * Comparable 比较器
+ *
+ * @author zjj
+ * @date 2022-10-15 22:00:00
  */
-public class ComparableDualComparator implements DualComparator<Comparable,Object> {
+public class ComparableDualComparator extends AbstractDualComparator<Comparable,Object> {
     @Override
     public boolean compute(Comparable former, Object latter) {
         return former.compareTo(latter) > 0;

@@ -12,6 +12,10 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * @author zjj
+ * @date 2022-10-15 22:00:00
+ */
 @Constraint(validatedBy = {InListValidator.class})
 @Documented
 @Repeatable(InList.List.class)

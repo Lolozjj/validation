@@ -15,6 +15,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * 枚举值参数校验器
  * 判断参数值是否在枚举元素的names之中
+ *
+ * @author zjj
+ * @date 2022-10-15 22:00:00
  */
 @Constraint(validatedBy = {EnumsValidator.class})
 @Documented
